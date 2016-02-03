@@ -14,7 +14,7 @@ var authController = modAuthByToken.controller('authController', function($scope
             $scope.name = 'Данные: ' + data + 'Статус: ' + status + 'Хедерс: ' + headers + 'Конфиг: ' + config;
 
 
-                alert("OPA GANDAM STYLE!");
+                alert("OPA GANDAM STYLE!!!");
         });
 
         //Restangular.all('sessions').post("some")
