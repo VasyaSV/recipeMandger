@@ -2,24 +2,39 @@
  * Created by Администратор on 01.02.2016.
  */
 
-var authController = modAuthByToken.controller('authController', function($scope, $http)
-{
-    $scope.login = function()
+var authController = modAuthByToken
+    .controller("authController",
+        ["$scope", "$http", "$cookies", "authService",
+        function($scope, $http, $cookies, authService)
     {
+        $scope.isAutorized = false;
 
-        //Restangular.all
+        var autorize = function(state)
+        {
+            // Грёбаные преобразования типов в яве!!!
+            if (state == "true")
+                $scope.isAutorized = true;
+            else
+                $scope.isAutorized = false;
+        };
 
-        $http.get('http://localhost:3000/', 'ONO GIVOE!!! GIVOE!!!','KAKOYTO KONFIG')
-            .success(function(data, status, headers, config){
-            $scope.name = 'Данные: ' + data + 'Статус: ' + status + 'Хедерс: ' + headers + 'Конфиг: ' + config;
+        $scope.init = function()
+        {
+            authService.checkToken(autorize);
+        };
 
+        $scope.login = function()
+        {
+            var name = $scope.name;
+            var pass = $scope.pass;
+            authService.loginByCredentials(name, pass);
+            authService.checkToken(autorize);
+        };
 
-                alert("OPA GANDAM STYLE!!!");
-        });
+        $scope.logout = function()
+        {
+            authService.logout(autorize);
+        };
 
-        //Restangular.all('sessions').post("some")
-
-
-    };
-
-});
+    }]
+);

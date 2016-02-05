@@ -5,11 +5,12 @@
 // TODO: При дабовлении нового модуля нужно записать его в зависимость к mdlApp
 
 // главный модуль приложения
-var app = angular.module('modApp', [
-    'modAuthByToken',
-    'ngResource'
+angular.module('modApp', [
+    'modAuthByToken'
 ]);
 
 // модуль аутофикации по токену
-// модуль описан в controllers/auth.js
-var modAuthByToken = angular.module('modAuthByToken', []);
+// модуль описан в controllers/auth.js и Rest/authRest.js
+var modAuthByToken = angular.module('modAuthByToken', [
+    "ngCookies"
+]);
