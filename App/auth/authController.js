@@ -9,6 +9,8 @@ var authController = modAuthByToken
     {
         $scope.isAutorized = false;
 
+        $scope.curUser = "Admin";
+
         var autorize = function(state)
         {
             // Грёбаные преобразования типов в яве!!!
@@ -23,10 +25,9 @@ var authController = modAuthByToken
             authService.checkToken(autorize);
         };
 
-        $scope.login = function()
+        $scope.login = function(name, pass)
         {
-            var name = $scope.name;
-            var pass = $scope.pass;
+            $scope.curUser = name; // Есть возможно сть как то видоизменить логин
             authService.loginByCredentials(name, pass);
             authService.checkToken(autorize);
         };

@@ -37,8 +37,9 @@ var authService = modAuthByToken
             var curToken = $cookies.accessToken;
             $cookies.accessToken = '';
             atorize(false);
-            $http.remove(serverURL+'logout', curToken)
+            $http.delete(serverURL+'logout', curToken)
                 .success(function(data, status, headers, config){
             });
+            return;
         };
     });

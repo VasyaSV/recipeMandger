@@ -8,22 +8,33 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <link ref="style" href="css/master.css">
     <script src="app.js"></script>
-    <script src="Rest/authRest.js"></script>
-    <script src="controllers/authController.js"></script>
+    <script src="auth/auth.js"></script>
+    <script src="auth/authRest.js"></script>
+    <script src="auth/authController.js"></script>
 </head>
 <body>
 
-    <div ng-controller="authController" ng-model=isAutorized ng-init="init()">
-        <div ng-if="isAutorized">
-            <h1> Здравствуйте {{name}} </h1>
+        <!-- Форма авторизации -->
+    <div ng-controller="authController" ng-init="init()">
+        <div ng-if="isAutorized===true">
+            <h1> Здравствуйте {{curUser}}! </h1>
             <p><button ng-click="logout()">Выйти</button></p>
         </div>
         <div ng-if="isAutorized===false">
-            <p><input type="text" ng-model=name></p>
-            <p><input type="text" ng-model=pass></p>
-            <p><button ng-click="login()">Войти</button></p>
+            <p><input type="text" ng-model="name"></p>
+            <p><input type="password" ng-model="pass"></p>
+            <p><button ng-click="login(name, pass)">Войти</button></p>
         </div>
     </div>
 
+    <!-- Форма ввода рецепта
+
+    <div>
+        <p><label>Возраст пациента</label><input type="number" ng-model=name></p>
+        <p><label></label><input type="tetx" ng-model=name></p>
+
+
+    </div>
+        -->
 </body>
 </html>

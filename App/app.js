@@ -10,7 +10,3 @@ angular.module('modApp', [
 ]);
 
 // модуль аутофикации по токену
-// модуль описан в controllers/auth.js и Rest/authRest.js
-var modAuthByToken = angular.module('modAuthByToken', [
-    "ngCookies"
-]);
