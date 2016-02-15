@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="modAuthByToken">
+<html ng-app="modApp">
 <head>
     <meta charset="UTF-8">
     <script src="bower_components/angular/angular.min.js"></script>
@@ -11,30 +11,36 @@
     <script src="auth/auth.js"></script>
     <script src="auth/authRest.js"></script>
     <script src="auth/authController.js"></script>
+    <script src="recipePrint/recipePrint.js"></script>
+    <script src="recipePrint/modRecipePrintController.js"></script>
 </head>
 <body>
 
-        <!-- Форма авторизации -->
-    <div ng-controller="authController" ng-init="init()">
-        <div ng-if="isAutorized===true">
-            <h1> Здравствуйте {{curUser}}! </h1>
-            <p><button ng-click="logout()">Выйти</button></p>
-        </div>
-        <div ng-if="isAutorized===false">
-            <p><input type="text" ng-model="name"></p>
-            <p><input type="password" ng-model="pass"></p>
-            <p><button ng-click="login(name, pass)">Войти</button></p>
+        <!-- Форма авторизации (шапка) -->
+     <div ng-controller="authController">
+        <div ng-init="init()">
+            <div ng-if="isAutorized===true">
+                <p>
+                    <label>Здравствуйте {{curUser}}!</label>
+                    <button ng-click="logout()">Выйти</button>
+                </p>
+                <p>
+                    <a href="#/printRecipe">Распечатать</a>
+                    <a href="#/homePage">Домой</a>
+                </p>
+            </div>
+            <div ng-if="isAutorized===false">
+                <p><input type="text" ng-model="name"></p>
+                <p><input type="password" ng-model="pass"></p>
+                <p><button ng-click="login(name, pass)">Войти</button></p>
+            </div>
         </div>
     </div>
 
-    <!-- Форма ввода рецепта
-
+        <!-- Содержимое страници -->
     <div>
-        <p><label>Возраст пациента</label><input type="number" ng-model=name></p>
-        <p><label></label><input type="tetx" ng-model=name></p>
-
-
+        <ng-view></ng-view>
     </div>
-        -->
+
 </body>
 </html>

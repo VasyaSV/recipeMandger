@@ -1,0 +1,25 @@
+<div>
+    {{medicaments[0].Title}}
+    <p><label>Возраст пациента</label><input type="number" ng-model="age"></p>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Наименование</th>
+            <th>Указание больному о приёме</th>
+            <th>Указание на изготовление лекарственной формы</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="medicament in medicaments">
+            <td>{{medicament.Title}}</td>
+            <td>{{medicament.Timing}}</td>
+            <td>{{medicament.ToDoing}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p><label>Личная информация о пациенте</label><input type="text" ng-model=name> по желанию пациента</p>
+    <p><label>Дата окончания курса</label><input type="date" ng-model=name> по желанию пациента</p>
+    <button>Распечатать</button>
+</div>

@@ -2,14 +2,11 @@
  * Created by Администратор on 01.02.2016.
  */
 
-var authController = modAuthByToken
-    .controller("authController",
+modApp.controller("authController",
         ["$scope", "$http", "$cookies", "authService",
         function($scope, $http, $cookies, authService)
     {
-        $scope.isAutorized = false;
-
-        $scope.curUser = "Admin";
+        $scope.isAutorized = true;
 
         var autorize = function(state)
         {
@@ -23,6 +20,12 @@ var authController = modAuthByToken
         $scope.init = function()
         {
             authService.checkToken(autorize);
+            var auth = $scope.isAutorized;
+            if (auth == "true")
+                $scope.curUser = ""; // тут надо брать имя врача по сессии (токену)
+            else
+                $scope.curUser = "";
+
         };
 
         $scope.login = function(name, pass)

@@ -1,7 +1,7 @@
 /**
  * Created by Администратор on 03.02.2016.
  */
-var authService = modAuthByToken
+var authService = modApp
     .service('authService', function($http, $cookies) {
         'use strict';
 
